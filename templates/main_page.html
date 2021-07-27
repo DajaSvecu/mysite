@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar-item {
+  float: left;
+}
+
+.navbar-item a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar-item a:hover {
+  background-color: #111;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+}
+
+#content {
+  text-align: center;
+  background-color: #1000;
+}
+
+
+</style>
+</head>
+<body>
+
+<ul class='navbar'>
+  <li class='navbar-item'><a href="http://127.0.0.1:8000/">Home</a></li>
+  <li class='navbar-item'><a href="http://127.0.0.1:8000/polls">Polls</a></li>
+  <li class='navbar-item'><a href="http://127.0.0.1:8000/todo">To do list</a></li>
+</ul>
+<div id='content'>
+    {% block content %}{% endblock %}
+</div>
+
+<div class="footer">
+  <p>Dalibor Švec</p>
+</div>
+</body>
+</html>

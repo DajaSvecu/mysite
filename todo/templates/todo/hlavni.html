@@ -1,0 +1,16 @@
+{% extends 'main_page.html'%}
+
+{% block content %}
+{% load static %}
+<h1>Seznam uzivatelu:</h1>
+
+{% if list_uzivatelu %}
+    <ul>
+        {% for person in list_uzivatelu %}
+            <li><a href="{% url 'todo:detail' person.id %}">{{person.user_name}}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Zadni uzivatele nejsou dostupni.</p>
+{% endif %}
+{% endblock %}

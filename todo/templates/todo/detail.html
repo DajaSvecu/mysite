@@ -1,0 +1,28 @@
+{% extends 'main_page.html'%}
+
+{% block content %}
+<h1>To do list uzivatele:</h1>
+<h1>{{user.user_name}}</h1>
+
+<form action="{% url 'todo:detail' user.id %}" method="post">
+{% csrf_token %}
+<input type='text' name='newitem' id='1' placeholder='Novy ukol...'>
+<input type="submit" value="Uloz" class='addBtn'>
+</form>
+
+{% if user.todoitems_set.all %}
+    <form action="{% url 'todo:finished' user.id %}" method="post">
+    {% csrf_token %}
+    {% for todoitems in user.todoitems_set.all %}
+        <input type="checkbox" name="finished_item" id="item{{ forloop.counter }}" value="{{ todoitems.id }}"> 
+        <label for="item{{ forloop.counter }}">{{ todoitems.item }}</label><br>
+    {% endfor %}
+    <input type="submit" value='Ukol splnen'>
+    </form>
+    {% if error_msg %}
+        <p> {{error_msg}}</p>
+    {% endif %}
+{% else %}
+    <p>Zadne ukoly.</p>
+{% endif %}
+{% endblock %}
